@@ -1,40 +1,16 @@
-<!doctype html>
-<html>
 
-<head>
-	<meta charset="UTF-8">
-	
-	<!-- Builds -->
-	<script src="http://cdn.jsdelivr.net/npm/hls.js@0.12.2/dist/hls.min.js"></script>
-	<script src="http://cdn.streamroot.io/hlsjs-dna-wrapper/1/stable/hlsjs-dna-wrapper.js"></script>
 
-	<!-- Graphs -->
-	<script src="http://tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
-</head>
-
-<body>
-	<header></header>
-	<center>
-		<video id="demoplayer" width="512" height="288" muted controls autoplay></video>
-		
-	</center>
-
-	<script>
-		var hlsjsConfig = {
-			"maxBufferSize": 0,
-			"maxBufferLength": 30,
-			"liveSyncDuration": 30
-		};
-		var dnaConfig = {};
-		var hls = new Hls(hlsjsConfig);
-		var wrapper = new HlsjsDnaWrapper(hls, "demoswebsiteandpartners", dnaConfig);
-		var videoElement = document.getElementById('demoplayer');
-		hls.loadSource('http://aklivetv.com:8080/starsports1/tracks-v1a1/mono.m3u8');
-		hls.attachMedia(videoElement);
-		hls.on(Hls.Events.MANIFEST_PARSED, function () {
-			videoElement.play();
-		});
-	</script>
-</body>
-
-</html>
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script> 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/clappr.level-selector/latest/level-selector.min.js"></script> 
+ <div id="oper"></div> 
+ <div id="vid"></div>
+ 
+ <script> 
+ player = new Clappr.Player({ 
+ source: "http://aklivetv.com:8080/starsports1/tracks-v1a1/mono.m3u8",   
+ mimeType: "application/x-mpegURL",  
+ autoPlay: true,  height: "100%", 
+ width: "100%", 
+ plugins: {"core": [LevelSelector]}, 
+ parentId: "#vid"}); 
+ </script>
